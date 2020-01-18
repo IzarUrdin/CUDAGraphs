@@ -60,7 +60,7 @@ Here is a simplified kernel as an example of deep recursion.
     		}
     	}
     	
-    	printf("%s\n", route);
+    	printf("%s\n", newroute);
     
     	Recursive <<<1, newlen>>>(depth + 1, newroute);
     
