@@ -26,4 +26,46 @@ Going through the most effective way is to get first the next most determinant a
 
 Deciding which is the best procedure in each step is like calculating the best move in a chess game, but having a huge number of variables and results of the different proceedings it is possible to make-up a regressive exploration to determine different groups of exploratory models as Mutex-Matrix reductions. Hence, even when computers are not diagnosing particular cases they are mining data from historical procedings to define better models of diagnosing.
 
+#FIRST ATTEMPT#
 
+Something that can be useful for beginners with CUDA is that launching a child kernel passing a local variable it is not allowed. You will see the exception: `Error: a pointer to local memory cannot be passed to a launch as an argument`.
+
+It is possible to solve copying with `memalloc` for using it as a referable argument.
+
+Here is a simplified kernel as an example of deep recursion.
+
+    __device__ char init[6] = { "12345" };
+    
+    __global__ void Recursive(int depth, const char* route) {
+    	
+    	// up to depth 6
+    	if (depth == 5) return;
+    	
+    	//declaration for a referable argument (point 6)
+    	char* newroute = (char*)malloc(6); 
+    	memcpy(newroute, route, 5);
+    			
+    	int o = 0;
+    	int newlen = 0;
+    	for (int i = 0; i < (6 - depth); ++i)
+    	{
+    		if (i != threadIdx.x)
+    		{
+    			newroute[i - o] = route[i];
+    			newlen++;
+    		}
+    		else
+    		{
+    			o = 1;
+    		}
+    	}
+    	
+    	printf("%s\n", route);
+    
+    	Recursive <<<1, newlen>>>(depth + 1, newroute);
+    
+    }
+    
+    __global__ void RecursiveCount() {
+    	Recursive <<<1, 5>>>(0, init);
+    }
