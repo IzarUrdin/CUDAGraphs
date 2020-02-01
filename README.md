@@ -76,7 +76,10 @@ Basing the algorithm in the recursive kernel above we can explore all the possib
 
 [Algorithm will be showed soon]
     
-Counting all the recursive calls (k-operations) for this matrix we obtain the number 3554. In the worst case the number of k-opearions will be the factorial of the number of variables; in this example of not optimized 7 variables it could results in 7x6x5x4x3x2x1 = 5040 k-operations. Due to the mutual exclusion configuration of the variables, the number of k-operations may be reduced drastically. When a mutex is optimized we use only the variables that are entangled enough to be a knowledge on a problem; others only represent noise that worths nothing in a solution. To identify the optimum mutex is another problem, now we only know some optimal mutex, like the following.
+Counting all the recursive calls (k-operations) for this matrix we obtain the number 3554. In the worst case the number of k-opearions will be the factorial of the number of variables; in this example of not optimized 7 variables it could results in 7x6x5x4x3x2x1 = 5040 k-operations. Due to the mutual exclusion configuration of the variables, the number of k-operations may be reduced drastically. When a mutex is optimized we use only the variables that are entangled enough to be a knowledge on a problem; others only represent noise that worths nothing in a solution. 
     
 ![Mutex-Matrix-10](https://ixilka.net/publications/mutex10_1.jpg)
 
+This optimized mutex for 10 variables needs only 3.539 k-operations to be resolved insteed of the 10! = 3.628.800 operations for a 10 variable mutex not optimized. 
+
+To identify the optimum mutex is another problem, for now we only need to know that they can exist.
