@@ -69,3 +69,14 @@ Here is a simplified kernel as an example of deep recursion.
     __global__ void RecursiveCount() {
     	Recursive <<<1, 5>>>(0, init);
     }
+    
+**Optimus Mutex**
+    
+Basing the algorithm in the recursive kernel above we can explore all the possible combinations having into account the mutual exclusion of the variables shown in the matrix.
+
+[Algorithm will be showed soon]
+    
+Counting all the recursive calls (k-operations) for this matrix we obtain the number 3554. In the worst case the number of k-opearions will be the factorial of the number of variables; in this example of not optimized 7 variables it could results in 7x6x5x4x3x2x1 = 5040 k-operations. Due to the mutual exclusion configuration of the variables, the number of k-operations may be reduced drastically. When a mutex is optimized we use only the variables that are entangled enough to be a knowledge on a problem; others only represent noise that worths nothing in a solution. To identify the optimum mutex is another problem, now we only know some optimal mutex, like the following.
+    
+![Mutex-Matrix-10](https://ixilka.net/publications/mutex10_1.jpg)
+
