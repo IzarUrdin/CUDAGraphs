@@ -80,6 +80,6 @@ Counting all the recursive calls (k-operations) for this matrix we obtain the nu
     
 ![Mutex-Matrix-10](https://ixilka.net/publications/mutex10_1.jpg)
 
-This optimized mutex for 10 variables needs only 3.539 k-operations to be resolved insteed of the 10! = 3.628.800 operations for a 10 variable mutex not optimized. 
+This optimized mutex for 10 variables needs only 3.539 k-operations to be resolved instead of the 10! = 3.628.800 operations for a 10 variable mutex not optimized. 
 
 To identify the optimum mutex is another problem, for now we only need to know that they can exist.
